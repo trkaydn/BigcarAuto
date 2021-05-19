@@ -1,0 +1,100 @@
+﻿@model CarBrandViewModel
+<div id="main" class="alt">
+    <section id="one">
+        <div class="inner">
+            <header class="major">
+                <a href="@Url.Action("Index","Car")"><h1>Tüm Araçlar</h1></a>
+                <h4>@ViewBag.Message</h4>
+            </header>
+
+            <div class="row">
+                <form method="post" action="@Url.Action("Index","Car")">
+                    <div class="fields">
+                        <div class="field quarter">
+                            <label>Marka</label>
+                            <select name="brandId">
+                                <option value="0">Tümü</option>
+                                @foreach (var brand in Model.Brand)
+                                {
+                                    if (TempData["brandId"] != null && brand.Id.ToString() == TempData["brandId"].ToString())
+                                    {
+                                        <option value="@brand.Id" selected>@brand.Name</option>
+                                        continue;
+                                    }
+                                    <option value="@brand.Id">@brand.Name</option>
+
+                                }
+                            </select>
+                        </div>
+
+                        <div class="field quarter">
+                            <label>Yakıt Türü</label>
+                            <select name="fuelType">
+                                <option value="0">Tümü</option>
+                                @if (TempData["fuelType"] != null && TempData["fuelType"].ToString() == "Benzin")
+                                {
+                                    <option value="Benzin" selected>Benzin</option>
+                                    <option value="Dizel">Dizel</option>
+                                }
+                                else if (TempData["fuelType"] != null && TempData["fuelType"].ToString() == "Dizel")
+                                {
+                                    <option value="Benzin">Benzin</option>
+                                    <option value="Dizel" selected>Dizel</option>
+                                }
+                                else
+                                {
+                                    <option value="Benzin">Benzin</option>
+                                    <option value="Dizel">Dizel</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="field quarter">
+                            <label>Vites</label>
+                            <select name="gearBox">
+                                <option value="0">Tümü</option>
+                                @if (TempData["gearBox"] != null && TempData["gearBox"].ToString() == "Otomatik")
+                                {
+                                    <option value="Otomatik" selected>Otomatik</option>
+                                    <option value="Manuel">Manuel</option>
+                                }
+                                else if (TempData["gearBox"] != null && TempData["gearBox"].ToString() == "Manuel")
+                                {
+                                    <option value="Otomatik">Otomatik</option>
+                                    <option value="Manuel" selected>Manuel</option>
+                                }
+                                else
+                                {
+                                    <option value="Otomatik">Otomatik</option>
+                                    <option value="Manuel">Manuel</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="field quarter">
+                            <br /> <input type="submit" value="Ara" class="primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                @foreach (var car in Model.PagedCar)
+                {
+                    <div class="col-md-3 col-sm-6 co-xs-12 text-center" style="background-color:slategray; margin:2%; cursor:pointer;" id="@car.Id" onmouseenter="carFocus(@car.Id)" onmouseleave="carUnfocus(@car.Id)">
+                        <a href=@Url.Action("Detail","Car",new {id=car.Id})>
+                            <img src="@car.CarPhoto1" class="img-responsive" alt="@car.Model">
+                            <h3>@car.Brand.Name @car.Model</h3>
+                            <p style="font-size:120%">Model Yılı: @car.ModelYear &nbsp;  <br /> Yakıt: @car.FuelType &nbsp; Vites: @car.GearBox <br /> Km: @car.Kilometer.ToString("#,#")</p>
+                            <h4><em>@car.Price.ToString("#,##0.00") &#8378;</em></h4>
+                        </a>
+                    </div>
+                }
+
+            </div>
+            <div style="margin:auto;width:30%;color:black">
+                @Html.PagedListPager(Model.PagedCar, page => Url.Action("Index", new { page }))
+            </div>
+
+        </div>
+    </section>
+</div>

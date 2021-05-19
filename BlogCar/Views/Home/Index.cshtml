@@ -1,0 +1,62 @@
+﻿@model CarBrandViewModel
+@{
+    ViewBag.Title = "Index";
+    var last6 = Model.Car.OrderByDescending(i => i.Id).Take(6).ToList();
+}
+
+<section id="banner" class="major">
+    <div class="inner">
+        <header class="major">
+            <h1>Hayalinizdeki arabaya kavuşmanın tam zamanı!</h1>
+        </header>
+        <div class="content">
+            <p>Size en uygun aracı bulmakta zorlanıyor musunuz? </p>
+            <ul class="actions">
+                <li><a href="javascript:void(0);"  class="button contactbutton next scrolly">Bize Ulaşın</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<div id="main">
+    
+    <section class="tiles">
+        @foreach (var car in last6)
+        {
+            <article style="cursor:pointer" class="cardetail">
+                <span class="image">
+                    <img src="@car.CarPhoto1" alt="@car.Model" />
+                </span>
+
+                <header class="major">
+                    <p>
+                        <i class="fa fa-dashboard"> @car.Kilometer km &nbsp;&nbsp;</i>
+                        <i class="fa fa-cube">@car.Power Hp&nbsp;&nbsp;</i>
+                        <i class="fa fa-cog"> @car.GearBox</i>
+                    </p>
+
+                    <h3>@car.Brand.Name @car.Model</h3>
+
+                    <p><strong> @car.Price.ToString("#,##0.00") &#8378;</strong></p>
+
+                    <p>@car.ModelYear  /  @car.FuelType  /  @car.Color</p>
+
+                    <div class="major-actions">
+                        <button class="button small next" value="@car.Id">Detaylar</button>
+                    </div>
+                </header>
+            </article>
+        }
+    </section>
+
+    <section>
+        <div class="inner">
+            <header class="major">
+                <h2>Biz Kimiz?</h2>
+            </header>
+            <p>BigCar, 2021 yılının Mayıs ayında Tarık Aydın tarafından geliştirilmiş olan bu sayfada ikinci el araç alım-satım alanında faaliyet sürdürüyormuş gibi görünen hayali bir firmadır. Sayfadaki içeriklerin doğruluk payı yoktur.</p>
+            <ul class="actions">
+                <li><a href="@Url.Action("About","Home")" class="button next">Devamını Oku</a></li>
+            </ul>
+        </div>
+    </section>
+</div>

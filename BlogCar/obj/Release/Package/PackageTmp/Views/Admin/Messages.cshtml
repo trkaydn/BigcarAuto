@@ -1,0 +1,43 @@
+﻿@using BlogCar.Models.Entities
+@model List<Message>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<a class="btn btn-secondary" href="@Url.Action("Index","Admin")">Geri</a>
+<h3 style="text-align:center"> Gelen Kutusu</h3>
+<div class="table-responsive">
+    <table class="table table-hover table-active">
+        <thead class="bg-dark">
+            <tr>
+                <th>İlan No</th>
+                <th>Gönderen</th>
+                <th>Tarih</th>
+                <th>Mesaj</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody id="tblmessages">
+            @foreach (var message in Model)
+            {
+                <tr id="@message.Id">
+                    @if (message.CarId == 0)
+                    {
+                        <td>İletişim Formu</td>
+                    }
+                    else
+                    {
+                        <td>@message.CarId</td>
+                    }
+                    <td>@message.Name</td>
+                    <td>@message.MessageDate.ToString("dd.MM.yyyy")</td>
+                    <td>@message.MessageText</td>
+                    <td><button class="btn btn-danger btnDelMessage" value="@message.Id">X</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+

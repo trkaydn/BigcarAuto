@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @if (ViewBag.Title != null)
+    {
+        <title>@ViewBag.Title</title>
+    }
+    else
+    {
+        <title>BigCar - Sayfa Bulunamadı</title>
+    }
+    <link rel="shortcut icon" type="image/svg" href="~/Content/images/favicon.png" />
+    <link href="~/Content/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/main.css" rel="stylesheet" />
+</head>
+<body class="is-preload">
+
+    <div id="wrapper">
+        <div id="main" class="alt">
+
+            <section id="one">
+                <div class="inner">
+                    @RenderBody()
+                </div>
+            </section>
+        </div>
+    </div>
+    <footer id="footer">
+        <div class="inner" style="text-align:center;">
+            <ul class="copyright">
+                <li>Copyright © 2021 Tarık Aydın - Tüm hakları saklıdır.</li>
+            </ul>
+        </div>
+    </footer>
+    <script src="~/Content/assets/js/breakpoints.min.js"></script>
+    <script src="~/Content/assets/js/browser.min.js"></script>
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/jquery.scrollex.min.js"></script>
+    <script src="~/Content/assets/js/jquery.scrolly.min.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
+    <script src="~/Content/assets/js/util.js"></script>
+    <script src="~/Content/assets/js/sweetalert2.all.min.js"></script>
+    <script src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/test.js"></script>
+</body>
+</html>

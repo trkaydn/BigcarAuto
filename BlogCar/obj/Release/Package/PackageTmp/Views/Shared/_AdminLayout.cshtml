@@ -1,0 +1,75 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>BigCar Auto</title>
+    <meta charset="utf-8" lang="tr" />
+    <link rel="shortcut icon" type="image/svg" href="~/Content/images/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link href="~/Content/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/main.css" rel="stylesheet" />
+    <noscript><link rel="stylesheet" href="~/Content/assets/css/noscript.css" /></noscript>
+    <link href="~/Content/assets/css/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/PagedList.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</head>
+<body class="is-preload">
+
+    <div id="wrapper">
+        <header id="header" class="alt">
+            <a href="@Url.Action("Index","Home")" class="logo"><strong>BigCar</strong> <span>Oto Galeri</span></a>
+            <nav>
+                <a href="#menu">Menü</a>
+            </nav>
+        </header>
+
+        <nav id="menu">
+            <ul class="links">
+                <li class="active"> <a href="@Url.Action("Index","Home")">Ana Sayfa</a> </li>
+
+                <li> <a href="@Url.Action("Index","Car")">Tüm Araçlar</a> </li>
+
+                <li> <a href="@Url.Action("About","Home")">Hakkımızda</a> </li>
+
+                <li><a href="javascript:void(0);" class="contactbutton">Bize Ulaşın</a></li>
+
+                <li><a href="@Url.Action("Index","Admin")">Yönetici Paneli</a></li>
+
+            </ul>
+        </nav>
+
+        <div id="main" class="alt">
+            <section id="one">
+                <a class="btn btn-danger" style="margin:auto;float:right;height:auto;margin-right:15px;" href="@Url.Action("Logout","Admin")" id="btnLogout"><i class="bi bi-power"></i>Çıkış</a>
+                <div class="inner">
+                    <div class="row">
+
+                        <header class="major">
+                            <h1><a href="@Url.Action("Index","Admin")">Yönetici Paneli</a></h1>
+                        </header>
+                    </div>
+                    @RenderBody()
+                </div>
+            </section>
+        </div>
+        <footer id="footer">
+            <div class="inner">
+                <ul class="copyright">
+                    <li>Copyright © 2021 Tarık Aydın - Tüm hakları saklıdır.</li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+    <script src="~/Content/assets/js/breakpoints.min.js"></script>
+    <script src="~/Content/assets/js/browser.min.js"></script>
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/jquery.scrollex.min.js"></script>
+    <script src="~/Content/assets/js/jquery.scrolly.min.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
+    <script src="~/Content/assets/js/util.js"></script>
+    <script src="~/Content/assets/js/sweetalert2.all.min.js"></script>
+    <script src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/test.js"></script>
+</body>
+</html>

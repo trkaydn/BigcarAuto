@@ -1,0 +1,33 @@
+﻿@using BlogCar.Models.Entities
+@model Admin
+
+<div id="main" class="alt">
+
+    <div class="inner">
+        <header class="major">
+            <h1>Hakkımızda</h1>
+        </header>
+        <div class="row">
+
+            <div class="col-md-3 col-sm-6 co-xs-12 text-center">
+                <img src="@Model.Photo" class="img-responsive" alt="@Model.Name">
+                <h3>@Model.Name</h3>
+                <h4><em>Jr. Web Developer</em></h4>
+            </div>
+
+            <div class="col-md-9 col-sm-6 co-xs-12 text-center">
+                <h4><em>@Model.About.Substring(0,224)</em></h4>
+                <br />
+                <h4><em>@Model.About.Substring(224)</em></h4>
+
+                <p style="text-align:right">İletişim Adresi: <a href="mailto:tarikayydin1846@gmail.com">tarikayydin1846@gmail.com</a></p>
+            </div>
+
+        </div>
+
+        <span class="image main"><img src="~/Content/images/map.jpg" alt="Ankara,Turkey"></span>
+        <p style="text-align:right">Mayıs,2021 - Ankara</p>
+
+    </div>
+</div>
+

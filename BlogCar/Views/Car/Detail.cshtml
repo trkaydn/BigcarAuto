@@ -1,0 +1,173 @@
+﻿@model CarDetailViewModel
+
+<div id="main" class="alt">
+    <section id="one">
+        <div class="inner">
+            <header class="major">
+                <h1>@Model.Car.Brand.Name @Model.Car.Model </h1>
+            </header>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="carouselCars" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselCars" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselCars" data-slide-to="1"></li>
+                            <li data-target="#carouselCars" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-flex w-100 " src="@Model.Car.CarPhoto1" alt="@Model.Car.Model" style="width: 1230px; max-height:480px;">
+                            </div>
+                            @if (Model.Car.CarPhoto2 != null)
+                            {
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="@Model.Car.CarPhoto2" alt="@Model.Car.Model" style="width: 1230px; max-height:480px;">
+                                </div>
+                            }
+                            @if (Model.Car.CarPhoto3 != null)
+                            {
+
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="@Model.Car.CarPhoto3" alt="@Model.Car.Model" style="width: 1230px; max-height:480px;">
+                                </div>
+                            }
+                        </div>
+
+                        <a class="carousel-control-prev" href="#carouselCars" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Önceki</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselCars" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Sonraki</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5" style="margin-left:auto;">
+                    <br />
+                    <form action="javascript:void(0);">
+                        <h2>Fiyat: @Model.Car.Price.ToString("#,##0.00") &#8378;</h2>
+                        <div class="fields">
+                            <div class="field quarter">
+                                <label>Motor</label>
+
+                                <input type="text" readonly value="@Model.Car.Power hp">
+                            </div>
+
+
+                            <div class="field quarter">
+                                <label>Vites</label>
+
+                                <input type="text" readonly value="@Model.Car.GearBox">
+                            </div>
+
+                            <div class="field quarter">
+                                <label>Yakıt</label>
+
+                                <input type="text" readonly value="@Model.Car.FuelType">
+                            </div>
+                        </div>
+                    </form>
+                    <form action="javascript:void(0);">
+
+                        <div class="fields">
+                            <div class="field quarter">
+                                <label>KM</label>
+
+                                <input type="text" readonly value="@Model.Car.Kilometer.ToString("#,#")">
+                            </div>
+
+                            <div class="field quarter">
+                                <label>Model Yılı</label>
+
+                                <input type="text" readonly value="@Model.Car.ModelYear">
+                            </div>
+
+                            <div class="field quarter">
+                                <label>Renk</label>
+                                <input type="text" readonly value="@Model.Car.Color">
+                            </div>
+                        </div>
+                    </form>
+                    <p style="text-align:right">İlan Tarihi: @Model.Car.ListDate.ToString("dd.MM.yyyy")</p>
+                </div>
+                <div class="field" style="width:100%; height:auto;">
+                    <br />
+                    <label for="message">Açıklama</label>
+                    <textarea name="message" id="message" rows="5" readonly>@Model.Car.Description</textarea>
+                </div>
+            </div>
+        </div>
+
+        <br>
+</div>
+    </section>
+
+<section id="contact">
+    <div class="inner">
+        <section>
+            <header class="major">
+                <h2>Mesaj Gönder</h2>
+            </header>
+            <div class="fields">
+                <div class="field half">
+                    <label for="name">Ad Soyad</label>
+                    <input type="text" name="Name" id="Name">
+                </div>
+                <div class="field half">
+                    <label for="email">Email</label>
+                    <input type="email" name="Mail" id="Mail">
+                </div>
+                <div class="field">
+                    <label for="subject">İlan No</label>
+                    <input type="text" name="ilanno" id="ilanno" value="@Model.Car.Id" readonly>
+                </div>
+                <div class="field">
+                    <label for="MessageText">Mesaj</label>
+                    <textarea name="MessageText" id="MessageText" rows="6"></textarea>
+                </div>
+                <br />
+                <div class="field half text-right">
+                    <ul class="actions">
+
+                        <li><input type="button" value="Gönder" class="primary " id="carMessage"></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="split">
+            <section>
+                <div class="contact-method">
+                    <span class="icon alt fa-user"></span>
+                    <h3>İletişim</h3>
+                    <span>Tarık Aydın</span>
+                </div>
+            </section>
+
+            <section>
+                <div class="contact-method">
+                    <span class="icon alt fa-envelope"></span>
+                    <h3>E-Posta</h3>
+                    <a href="mailto:tarikayydin1846@gmail.com">tarikayydin1846@gmail.com</a>
+                </div>
+            </section>
+            <section>
+                <div class="contact-method">
+                    <span class="icon alt fa-phone"></span>
+                    <h3>Telefon</h3>
+                    <span>+90 333 4040 5566</span>
+                </div>
+            </section>
+
+            <section>
+                <div class="contact-method">
+                    <span class="icon alt fa-phone"></span>
+                    <h3>Fax</h3>
+                    <span>+90 333 5550 3366</span>
+                </div>
+            </section>
+        </section>
+    </div>
+</section>

@@ -1,0 +1,80 @@
+﻿@using BlogCar.Models.Entities
+@model AddCarViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<a class="btn btn-secondary" href="@Url.Action("Index","Admin")">Geri</a>
+<h3 style="text-align:center">Yeni İlan Yayınla</h3>
+@if (TempData["AddCarError"] != null)
+{
+    <div class="alert alert-secondary"><button class="close" data-dismiss="alert" style="height:auto;color:darkred">×</button><h4 style="color:darkblue">@TempData["AddCarError"]</h4></div>
+}
+
+@using (Html.BeginForm("AddCar", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <span>Marka: (Listede yoksa geri gelip marka ekleyiniz.)</span>
+    @Html.DropDownListFor(x => x.Car.BrandId, Model.Brand, "Marka Seçin")
+    @Html.ValidationMessageFor(x => x.Car.BrandId, "", new { @class = "text-danger" })
+
+    <br />
+    <span>Model Adı:</span>
+    @Html.TextBoxFor(x => x.Car.Model, new { placeholder = "Model Adını Girin" })
+    @Html.ValidationMessageFor(x => x.Car.Model, "", new { @class = "text-danger" })
+
+    <br />
+    <span>Yakıt Türü:</span>
+    @Html.DropDownListFor(x => x.Car.FuelType, new List<SelectListItem>
+    {
+      new SelectListItem { Text = "Benzin", Value = "Benzin"},
+      new SelectListItem { Text = "Dizel", Value = "Dizel" },
+    }, "Yakıt Türü Seçin")
+    @Html.ValidationMessageFor(x => x.Car.FuelType, "", new { @class = "text-danger" })
+
+    <br />
+    <span>Vites:</span>
+    @Html.DropDownListFor(x => x.Car.GearBox, new List<SelectListItem>
+    {
+      new SelectListItem { Text = "Otomatik", Value = "Otomatik"},
+      new SelectListItem { Text = "Manuel", Value = "Otomatik" },
+    }, "Vites Türü Seçin")
+    @Html.ValidationMessageFor(x => x.Car.GearBox, "", new { @class = "text-danger" })
+
+    <br />
+    <span>Model Yılı:</span>
+    @Html.TextBoxFor(x => x.Car.ModelYear, new { placeholder = "Model yılı girin (Sayı)" })
+    @Html.ValidationMessageFor(x => x.Car.ModelYear, "", new { @class = "text-danger" })
+
+    <br />
+    <span>Kilometre:</span>
+    @Html.TextBoxFor(x => x.Car.Kilometer, new { placeholder = "Kilometre girin (Sayı)" })
+    @Html.ValidationMessageFor(x => x.Car.Kilometer, "", new { @class = "text-danger" })
+
+    <br />
+    <span>Motor Gücü (hp):</span>
+    @Html.TextBoxFor(x => x.Car.Power, new { placeholder = "Motor Gücünü Girin (Sayı)" })
+    @Html.ValidationMessageFor(x => x.Car.Power, "", new { @class = "text-danger" })
+
+    <br />
+    <span>Renk:</span>
+    @Html.TextBoxFor(x => x.Car.Color, new { placeholder = "Renk girin" })
+    @Html.ValidationMessageFor(x => x.Car.Color, "", new { @class = "text-danger" })
+
+    <br />
+    <span>Fiyat:</span>
+    @Html.TextBoxFor(x => x.Car.Price, new { placeholder = "Fiyat girin (Sayı)" })
+    @Html.ValidationMessageFor(x => x.Car.Price, "", new { @class = "text-danger" })
+
+    <br />
+    <span>Açıklama:</span>
+    @Html.TextAreaFor(x => x.Car.Description, new { placeholder = "Açıklama yazın" })
+    <br />
+    <span>Fotoğraf Yükle:</span>
+    @Html.TextBoxFor(x => x.ImageUpload, new { type = "file", multiple = "multiple", accept = "image/png, image/jpeg", id = "uploadPhoto", @class = "button", style="width:auto;"})
+    @Html.ValidationMessageFor(x => x.ImageUpload, "", new { @class = "text-danger" })
+
+    <br />
+    <br />
+    <input type="submit" class="btn-secondary btn-block" id="btnAddCar" style="float:right;" />
+}
+
+

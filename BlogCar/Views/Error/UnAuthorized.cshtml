@@ -1,0 +1,15 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_ErrorLayout.cshtml";
+    ViewBag.Title = "BigCar - Yetkilendirme Hatası";
+}
+
+<header class="major">
+    <h1>401</h1>
+    <h2>Yetkilendirme Hatası</h2>
+</header>
+<p>Bu sayfaya erişme yetkiniz yok.</p>
+<p>Önce giriş yapmalısınız.</p>
+<a href="javascript:void(0);" class="adminLogin button primary scrolly">Giriş Yap</a>
+
+<a href="@Url.Action("Index","Home")" class="button scrolly">Ana Sayfa</a>
